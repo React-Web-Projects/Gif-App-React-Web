@@ -6,6 +6,9 @@ export const GifExpertApp = () => {
   const [categories, setCategories] = useState(['']);
 
   const onAddCategory = (newCategory) => {
+    if (categories.includes(newCategory.toString().toLowerCase())) return;
+
+    setCategories([newCategory, ...categories]);
     // opción 1
     // setCategories(addCategory => addCategory.concat('Naruto'))
     // opción 2
@@ -18,10 +21,6 @@ export const GifExpertApp = () => {
     // setCategories(['Naruto'])
     // opción 6
     // setCategories(category =>[...category, 'Naruto'])
-
-    if (categories.includes(newCategory.toString().toLowerCase())) return;
-
-    setCategories([newCategory, ...categories]);
   };
 
   return (

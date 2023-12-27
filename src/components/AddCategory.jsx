@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PropTypes } from 'prop-types';
 
 export const AddCategory = ({ onNewCategory }) => {
   const [inputValue, setInputValue] = useState("");
@@ -7,7 +8,7 @@ export const AddCategory = ({ onNewCategory }) => {
   //    setInputValue(event.target.value);
   // }
 
-  // otra forma
+  // otra forma es desestructurando el event y obtener el target
   const onInputChange = ({ target }) => {
     setInputValue(target.value);
   };
@@ -23,7 +24,9 @@ export const AddCategory = ({ onNewCategory }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    //se agrega aria-label="form" para que pueda ser
+    //detectado en el test con getByRole('form)
+    <form onSubmit={onSubmit} aria-label="form">
       <input
         type="text"
         placeholder="Buscar gifs"
@@ -36,3 +39,7 @@ export const AddCategory = ({ onNewCategory }) => {
     </form>
   );
 };
+
+AddCategory.propTypes = {
+  onNewCategory: PropTypes.func.isRequired,
+}
