@@ -41,7 +41,7 @@ describe("Pruebas en <GifGrid/>", () => {
     });
 
     render(<GifGrid category={category}/>);
-    //se usa getAllByole() cuando se espera más de un elemento
+    //se usa getAllByRole() cuando se espera más de un elemento
     expect(screen.getAllByRole('img').length).toBe(2);
   });
 });

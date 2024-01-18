@@ -1,27 +1,10 @@
-import { useState } from "react";
 //usando el archivo de exportación index.js
 import { AddCategory , GifGrid} from "./components";
+import { useAddCategory } from "./hooks/useAddCategory";
 
 export const GifExpertApp = () => {
-  const [categories, setCategories] = useState(['']);
-
-  const onAddCategory = (newCategory) => {
-    if (categories.includes(newCategory.toString().toLowerCase())) return;
-
-    setCategories([newCategory, ...categories]);
-    // opción 1
-    // setCategories(addCategory => addCategory.concat('Naruto'))
-    // opción 2
-    // setCategories(categories.concat('Naruto'))
-    // opción 3
-    // setCategories([...categories, 'Naruto'])
-    // opción 4
-    // setCategories(['Naruto', ...categories, ])
-    // opción 5
-    // setCategories(['Naruto'])
-    // opción 6
-    // setCategories(category =>[...category, 'Naruto'])
-  };
+  
+  const {onAddCategory, categories} = useAddCategory();
 
   return (
     <>
